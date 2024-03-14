@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext';
-import { useLogout } from '../hooks/useLogout';
+
 
 const Navbar = () => {
-  const { user } = React.useContext(AuthContext);
-  const { logout } = useLogout();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleToggleMenu = () => {
@@ -46,17 +44,7 @@ const Navbar = () => {
           <li>
             <NavLink to='/careers' className="font-semibold lg:text-xl hover:underline" onClick={() => setIsMenuOpen(false)}>Careers</NavLink>
           </li>
-          {user && (
-            <ul className='space-y-2'>
-              <li>
-              <NavLink to='/admin/dashboard' className="font-semibold lg:text-xl hover:underline" >Dashboard</NavLink>
-            </li>
-            <li>
-              <button onClick={handleLogout} className='bg-rose-500 px-4 py-2 text-white rounded' >Logout</button>
-            </li>
-            
-            </ul>
-          )}
+          
         </ul>
       </div>
       {/* Menu items for lg screens and above */}
@@ -67,17 +55,7 @@ const Navbar = () => {
         <li>
           <NavLink to='/careers' className="font-semibold lg:text-xl hover:underline" onClick={() => setIsMenuOpen(false)}>Careers</NavLink>
         </li>
-        {user && (
-          <ul className='flex items-center gap-6'>
-          
-        <li>
-              <NavLink to='/admin/dashboard' className='font-semibold lg:text-xl hover:underline'>Dashboard</NavLink>
-            </li>
-        <li>
-            <button onClick={handleLogout} className='bg-rose-500 px-4 py-2 text-white rounded' >Logout</button>
-          </li>
-        </ul>
-        )}
+       
       </ul>
     </nav>
   );
